@@ -156,7 +156,7 @@ jobs:
                 $DISABLE_X11 \
                 $PLUGIN
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v5
         with:
           name: Termux APKs or bootstraps
           path: |
