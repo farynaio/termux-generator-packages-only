@@ -59,27 +59,27 @@ clean_artifacts() {
 
 # Funktion, um Repositories herunterzuladen
 download() {
-    if [[ "$TERMUX_APP_TYPE" == "f-droid" ]]; then
-        git clone --depth 1 https://github.com/termux/termux-packages.git               termux-packages-main
-        git clone --depth 1 https://github.com/termux/termux-tasker.git                 termux-apps-main/termux-tasker
-        git clone --depth 1 https://github.com/termux/termux-float.git                  termux-apps-main/termux-float
-        git clone --depth 1 https://github.com/termux/termux-widget.git                 termux-apps-main/termux-widget
-        git clone --depth 1 https://github.com/termux/termux-api.git                    termux-apps-main/termux-api
-        git clone --depth 1 https://github.com/termux/termux-boot.git                   termux-apps-main/termux-boot
-        git clone --depth 1 https://github.com/termux/termux-styling.git                termux-apps-main/termux-styling
-        git clone --depth 1 https://github.com/termux/termux-app.git                    termux-apps-main/termux-app
-        git clone --depth 1 https://github.com/termux/termux-gui.git                    termux-apps-main/termux-gui
+    # if [[ "$TERMUX_APP_TYPE" == "f-droid" ]]; then
+        git clone --depth 1 https://github.com/farynaio/termux-packages-with-custom-apk-name.git               termux-packages-main
+        # git clone --depth 1 https://github.com/termux/termux-tasker.git                 termux-apps-main/termux-tasker
+        # git clone --depth 1 https://github.com/termux/termux-float.git                  termux-apps-main/termux-float
+        # git clone --depth 1 https://github.com/termux/termux-widget.git                 termux-apps-main/termux-widget
+        # git clone --depth 1 https://github.com/termux/termux-api.git                    termux-apps-main/termux-api
+        # git clone --depth 1 https://github.com/termux/termux-boot.git                   termux-apps-main/termux-boot
+        # git clone --depth 1 https://github.com/termux/termux-styling.git                termux-apps-main/termux-styling
+        # git clone --depth 1 https://github.com/termux/termux-app.git                    termux-apps-main/termux-app
+        # git clone --depth 1 https://github.com/termux/termux-gui.git                    termux-apps-main/termux-gui
         # special case - for "F-Droid" Termux, it is necessary to move the termux-am-library subfolder of
         # the termux-am-library repository, which contains its actual code, into the termux-app folder,
         # where its code needs to be patched and compiled into the main "F-Droid" Termux APK
         git clone --depth 1 https://github.com/termux/termux-am-library.git             termux-apps-main/termux-am-library
         mv termux-apps-main/termux-am-library/termux-am-library/                        termux-apps-main/termux-app/termux-am-library
         rm -rf                                                                          termux-apps-main/termux-am-library/
-    else
-        git clone --depth 1 https://github.com/termux-play-store/termux-packages.git    termux-packages-main
-        git clone --depth 1 https://github.com/termux-play-store/termux-apps.git        termux-apps-main
-    fi
-    git clone --depth 1 --recursive https://github.com/termux/termux-x11.git        termux-apps-main/termux-x11
+    # else
+        # git clone --depth 1 https://github.com/termux-play-store/termux-packages.git    termux-packages-main
+        # git clone --depth 1 https://github.com/termux-play-store/termux-apps.git        termux-apps-main
+    # fi
+    # git clone --depth 1 --recursive https://github.com/termux/termux-x11.git        termux-apps-main/termux-x11
 }
 
 install_plugin() {
@@ -171,18 +171,18 @@ build_bootstraps() {
 
     local bootstrap_script_args=""
 
-    if [ -n "$ENABLE_SSH_SERVER" ]; then
-        ADDITIONAL_PACKAGES+=",openssh"
-    fi
+    # if [ -n "$ENABLE_SSH_SERVER" ]; then
+        # ADDITIONAL_PACKAGES+=",openssh"
+    # fi
 
     bootstrap_script_args+=" --add ${ADDITIONAL_PACKAGES}"
 
     if [[ "$TERMUX_APP_TYPE" == "f-droid" ]]; then
         local bootstrap_script="build-bootstraps.sh"
         local bootstrap_architectures="aarch64,x86_64,arm,i686"
-        if [ -n "${DISABLE_BOOTSTRAP_SECOND_STAGE-}" ]; then
+        # if [ -n "${DISABLE_BOOTSTRAP_SECOND_STAGE-}" ]; then
             bootstrap_script_args+=" --disable-bootstrap-second-stage"
-        fi
+        # fi
     else
         local bootstrap_script="generate-bootstraps.sh"
         local bootstrap_architectures="aarch64,x86_64,arm"
