@@ -1,4 +1,4 @@
-name: Generate Termux application
+name: Generate Termux packages
 
 on:
   workflow_dispatch:
