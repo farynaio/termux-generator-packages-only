@@ -72,9 +72,9 @@ download() {
         # special case - for "F-Droid" Termux, it is necessary to move the termux-am-library subfolder of
         # the termux-am-library repository, which contains its actual code, into the termux-app folder,
         # where its code needs to be patched and compiled into the main "F-Droid" Termux APK
-        git clone --depth 1 https://github.com/termux/termux-am-library.git             termux-apps-main/termux-am-library
-        mv termux-apps-main/termux-am-library/termux-am-library/                        termux-apps-main/termux-app/termux-am-library
-        rm -rf                                                                          termux-apps-main/termux-am-library/
+        # git clone --depth 1 https://github.com/termux/termux-am-library.git             termux-apps-main/termux-am-library
+        # mv termux-apps-main/termux-am-library/termux-am-library/                        termux-apps-main/termux-app/termux-am-library
+        # rm -rf                                                                          termux-apps-main/termux-am-library/
     # else
         # git clone --depth 1 https://github.com/termux-play-store/termux-packages.git    termux-packages-main
         # git clone --depth 1 https://github.com/termux-play-store/termux-apps.git        termux-apps-main
@@ -84,7 +84,7 @@ download() {
 
 install_plugin() {
     apply_patches "plugins/$TERMUX_GENERATOR_PLUGIN/$TERMUX_APP_TYPE-patches/bootstrap-patches" termux-packages-main
-    apply_patches "plugins/$TERMUX_GENERATOR_PLUGIN/$TERMUX_APP_TYPE-patches/app-patches" termux-apps-main
+    # apply_patches "plugins/$TERMUX_GENERATOR_PLUGIN/$TERMUX_APP_TYPE-patches/app-patches" termux-apps-main
 }
 
 # Funktion, um Bootstrap-Patches anzuwenden
