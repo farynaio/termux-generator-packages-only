@@ -11,7 +11,7 @@ DO_NOT_CLEAN=""
 TERMUX_GENERATOR_PLUGIN=""
 ADDITIONAL_PACKAGES="xkeyboard-config" # for termux-x11-nightly which is always preinstalled
 BOOTSTRAP_ARCHITECTURES=""
-DISABLE_BOOTSTRAP_SECOND_STAGE=""
+DISABLE_BOOTSTRAP_SECOND_STAGE=1
 ENABLE_SSH_SERVER=""
 DEFAULT_PASSWORD="changeme"
 DISABLE_BOOTSTRAP=""
@@ -153,9 +153,9 @@ while (($# > 0)); do
         # --enable-ssh-server)
             # ENABLE_SSH_SERVER=1
             # ;;
-        --disable-bootstrap)
-            DISABLE_BOOTSTRAP=1
-            ;;
+        # --disable-bootstrap)
+            # DISABLE_BOOTSTRAP=1
+            # ;;
         # --disable-terminal)
             # DISABLE_TERMINAL=1
             # ;;
